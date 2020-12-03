@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    const arr = [1, 3, 5, 8];
+    Array.prototype.filter2 = function(cb) {
+        const arr = [];
+        for(let i = 0; i < this.length; i ++) {
+            // 如果说这个函数调用完毕之后的结果是真，要怼到一个新数组里面
+            cb(this[i], i, this) && arr.push(this[i]);
+        }
+        return arr;
+    };
+    const r = arr.filter2((item, index, a) => item>=5);
+    console.log(r);
+    </script>
+</body>
+</html>

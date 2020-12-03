@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    const arr = [{
+        name: 'ifer'
+    }, {
+        name: 'elser'
+    }];
+
+    Array.prototype.find2 = function(cb) {
+        let temp;
+        for(let i = 0 ;i < this.length;i ++) {
+            if(cb(this[i], i , this)) {
+                temp = this[i];
+                break;
+            }
+        }
+        return temp;
+    };
+
+    const r = arr.find2((item, index, a) => item.name === 'elser' );
+    console.log(r);
+    </script>
+</body>
+</html>

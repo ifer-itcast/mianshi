@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Array.prototype.reduce = Array.prototype.reduce || function() {};
+
+        const arr = [2, 3, 5];
+
+        Array.prototype.reduce2 = function (cb, init) {
+            // 第一次循环的时候
+            // acc => 累计值，第一次循环的时候有讲究
+                // 如果说传递了初始值，那么 acc 就是初始值
+                // 如果说没有传递初始值，那么 acc 就是数组的【第一项】
+            // cur => 当前项，第一次循环的时候有讲究
+                // 如果说传递了初始值，那么 cur 就是数组的第 1 项
+                // 如果说没有传递初始值，那么 cur 就是数组的【第2项】
+            // 先判断一下是否传递了初始值
+
+            let i = 0;
+            if(Object.prototype.toString.call(init) === '[object Undefined]') {
+                // 说明没有传递初始值
+                // 如果说没有传递初始值，那么 acc 就是数组的【第一项】
+                init = this[0];
+                // 如果说没有传递初始值，那么 cur 就是数组的【第2项】，就是从索引为 1
+                i = 1;
+            }
+            // this => arr
+            for (i; i < this.length; i++) {
+                // init 在这里相当于累计值、当前项、当前项的索引、数组本身
+                init = cb(init, this[i], i, this);
+            }
+            return init;
+        };
+
+        let r = arr.reduce2((acc, cur) => acc + cur);
+        console.log(r);
+    </script>
+</body>
+
+</html>

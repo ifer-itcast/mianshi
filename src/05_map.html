@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const arr = ['a', 'b', 'c'];
+        Array.prototype.map2 = function(cb) {
+            const arr = [];
+            // #1 上来一个 for 循环
+            for(let i = 0; i < this.length; i ++) {
+                // #2 for 循环里面调用函数，里面传递对应的参数
+                arr.push(cb(this[i], i, this));
+            }
+            return arr;
+        };
+        // map 返回的是，加工之后的新数组
+        const r = arr.map2((item, index, a) => '~~' + item + '~~');
+        console.log(r);
+    </script>
+</body>
+
+</html>
