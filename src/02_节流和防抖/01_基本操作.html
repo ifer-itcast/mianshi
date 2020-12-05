@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    div {
+        margin: 0 auto;
+        border: 1px solid red;
+        width: 500px;
+        height: 300px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="oDiv"></div>
+    <script>
+    // 需求：mousemove 的时候显示鼠标的位置
+    oDiv.onmousemove = function(e) {
+        this.innerHTML = `x:${e.pageX},y:${e.pageY}`;
+    };
+    </script>
+</body>
+
+</html>

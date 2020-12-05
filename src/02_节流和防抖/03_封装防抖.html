@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            margin: 0 auto;
+            border: 1px solid red;
+            width: 500px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="oDiv"></div>
+    <script>
+        // 防抖：持续触发不执行，不触发的一段时间后才执行
+        /* let timer = null;
+        oDiv.onmousemove = function (e) {
+            // 每次 mousemove 的时候清除前面的定时器
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                this.innerHTML = `x:${e.pageX},y:${e.pageY}`;
+            }, 100);
+        }; */
+
+        /* oDiv.onmousemove = debounce(function () {
+            // 这里面你该做啥做啥
+            console.log(1);
+        }, 100);
+
+        // debounce 的返回值应该是一个函数
+        function debounce(cb, time) {
+            let timer = null;
+            return function () {
+                // 这里的代码是事件触发的时候会执行的
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                    cb();
+                }, time);
+            };
+        } */
+
+
+        oDiv.onmousemove = debounce(function (e) {
+            // 这里面你该做啥做啥
+            this.innerHTML = `x:${e.pageX},y:${e.pageY}`;
+        }, 100);
+
+        // debounce 的返回值应该是一个函数
+        function debounce(cb, time) {
+            let timer = null;
+            return function () {
+                // 这里的代码是事件触发的时候会执行的
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                    // 第一个问题，事件对象获取不到，待会可以通过 arguments 传递过去
+                    // 第二个问题，this 期望是 oDiv
+                    cb.apply(this, arguments); // window.cb()
+                }, time);
+            };
+        }
+    </script>
+</body>
+
+</html>

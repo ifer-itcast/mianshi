@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            margin: 0 auto;
+            border: 1px solid red;
+            width: 500px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="oDiv"></div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script>
+        oDiv.onmousemove = _.debounce(function (e) {
+            // 这里面你该做啥做啥
+            this.innerHTML = `x:${e.pageX},y:${e.pageY}`;
+        }, 100);
+    </script>
+</body>
+
+</html>
