@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    /* function Person(name, age) {
+        this.name = name;
+        this.age = age;
+        // 方法不应该是挂载到这里的，
+        // 挂载到这里有一个问题，每一个实例的 say 方法都不相等
+        this.say = function() {};
+    }
+
+    let p1 = new Person();
+    let p2 = new Person();
+    console.log(p1.say === p2.say); // false */
+
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    // 方法应该挂到构造函数的原型上面
+    Person.prototype.say = function() {
+        console.log('Hello');
+    };
+
+    function Star(name, age) {
+        // #1 Call 式继承
+        // 这个 this 就是 Star 的实例对象 => s
+        // Person.call(this, name, age);
+        Person.apply(this, [name, age]);
+    }
+
+    // p 啥都有，有 name、age、say 方法
+    let p = new Person();
+    // 你把一个啥有都有东西给了 Star.prototype，意味着 Star.prototype 上面也啥都有了
+    // Star.prototype 有 name 是undefined、有 age 也是 undefined、【有完整的 say 方法】
+    // #2 原型继承：继承的是方法
+    Star.prototype = p;
+    // 对后续 Person 生成的实例是没有影响的，这就是我们期望的
+    Star.prototype.zhengqian = function() {
+        console.log('挣钱')
+    };
+
+    let s = new Star('迪丽热巴', 18);
+    // 因为 Star.prototype 上面具备 say 方法，所以这里可以调用
+    // s.say();
+    // s.zhengqian();
+    // console.log(s.name, s.age);
+
+    /* let p3 = new Person();
+    p3.zhengqian(); */
+
+    // constructor  可以判断这个实例来自于谁 ，但是这里进行比较的时候确实 false
+    console.log(s.constructor === Star);
+    </script>
+</body>
+
+</html>

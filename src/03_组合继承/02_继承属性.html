@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    function Star(name, age) {
+        // Call 式继承
+        // 这个 this 就是 Star 的实例对象 => s
+        // Person.call(this, name, age);
+        Person.apply(this, [name, age]);
+    }
+
+    let s = new Star('迪丽热巴', 18);
+    console.log(s.name, s.age);
+    </script>
+</body>
+
+</html>

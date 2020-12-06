@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    // 判断一个函数是不是构造函数，使用的时候有没有 new
+    // p 就是 Person 的实例，Person 上面有的东西 p 都有
+    let p = new Person('ifer', 18);
+    console.log(p.name);
+    console.log(p.age);
+    </script>
+</body>
+
+</html>
