@@ -1,0 +1,39 @@
+<template>
+  <div>
+    {{username}}
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'User',
+
+  data () {
+    return {
+      username: this.$route.params.username
+    }
+  },
+  watch: {
+    $route(to, from) {
+      // to => 到哪里去的路由对象
+      // from => 从哪里过来的路由对象
+      // console.log(to, from);
+      this.username = to.params.username;
+    }
+  }
+}
+</script>
+
+<!-- 可以把获取路由参数的代码写到模板里面 -->
+
+<template>
+  <div>
+    {{$route.params.username}}
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'User',
+}
+</script>
