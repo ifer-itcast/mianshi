@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="firstName">
+        <input type="text" v-model="lastName">
+        <p>{{fullName}}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                firstName: '迪丽',
+                lastName: '热巴',
+                fullName: ''
+            },
+            watch: {
+                // 如果 firstName 有发生变化，就会触发这里的函数执行
+                firstName(newValue, oldValue) {
+                    // 这里的代码一刷新不会执行
+                    this.fullName = newValue + this.lastName;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

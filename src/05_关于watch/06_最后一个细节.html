@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="info.username">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                info: {
+                    username: 'ifer'
+                }
+            },
+            computed: {
+                newInfo() {
+                    // Hack
+                    return JSON.parse(JSON.stringify(this.info));
+                }
+            },
+            watch: {
+                newInfo: {
+                    handler(newValue, oldValue) {
+                        console.log(newValue, oldValue);
+                    },
+                    deep: true
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>

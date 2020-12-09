@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="info.username">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                info: {
+                    username: 'ifer'
+                }
+            },
+            watch: {
+                'info.username': {
+                    handler(newValue, oldValue) {
+                        console.log(2333);
+                    },
+                    // 开启深度监听，info 里面的任何数据的变化都会触发 handler
+                    // 当 info 里面的数据比较复杂时，可能会带来性能问题，那改怎么办呢？
+                    // deep: true
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>

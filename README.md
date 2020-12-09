@@ -42,3 +42,5 @@ Star.prototype.constructor = Star;
 ```
 
 ## 4. JS 垃圾回收（GC => Garbage Collection）
+
+## 5. Vue 中的 watch 和 computed 差异

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="info.username">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                info: {
+                    username: 'ifer'
+                }
+            },
+            watch: {
+                // 监听 info 的变化，当 info 变化的时候就触发 handler 这个函数
+                // 如果监听的是一个对象，只有这个对象的引用发生变化的时候，才会触发 handler
+                info: {
+                    handler(newValue, oldValue) {
+                        console.log(2333);
+                    },
+                }
+            },
+            mounted() {
+                // 证明了确实是引用发生变化，才会触发 handler
+                this.info = { username: 'elser' };
+            },
+        });
+    </script>
+</body>
+
+</html>
