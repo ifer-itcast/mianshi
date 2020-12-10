@@ -52,24 +52,25 @@
         // console.log(obj);
 
         // 要代理的对象、
-        const pObj = new Proxy(obj, {
-            // target => obj
-            // key => 操作的数据
+        
+        // 支持 13 种拦截操作
+        const proxyObj = new Proxy(obj, {
+            deleteProperty(target, key) {
+                delete target[key];
+            },
             get(target, key) {
-                console.log(target === obj)
-                console.log('触发了获取');
                 return target[key];
             },
             set(target, key, newValue) {
-                console.log('触发了设置', newValue);
+                console.log(newValue);
                 target[key] = newValue;
-            }
+            },
         });
 
-        pObj.info.hobby = 'xxxx';
+        proxyObj.age = 199;
 
-        console.log(obj);
-        
+        // console.log(obj);
+        // console.log(pObj);
     </script>
 </body>
 
