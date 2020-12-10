@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const obj = {
+            name: 'ifer',
+            age: 18,
+            info: {
+                hobby: '西瓜'
+            }
+        };
+
+        const copyObj = { ...obj };
+
+        /* Object.defineProperty(obj, 'name', {
+            get() {
+                console.log('触发了');
+                return copyObj['name'];
+            },
+            set(newValue) {
+                console.log('触发了设置');
+                copyObj['name'] = newValue;
+            }
+        });
+        // console.log(obj.name);
+        obj.name = 'xxx';
+        console.log(obj); */
+
+
+        // 监听所有的属性：【数据劫持】
+        /* Object.keys(obj).forEach(item => {
+            Object.defineProperty(obj, item, {
+                get() {
+                    console.log('触发了获取');
+                    return copyObj[item];
+                },
+                set(newValue) {
+                    console.log('触发了设置');
+                    copyObj[item] = newValue;
+                }
+            });
+        }); */
+
+        // obj.info.hobby;
+        // console.log(obj);
+
+        // 要代理的对象、
+        const pObj = new Proxy(obj, {
+            // target => obj
+            // key => 操作的数据
+            get(target, key) {
+                console.log(target === obj)
+                console.log('触发了获取');
+                return target[key];
+            },
+            set(target, key, newValue) {
+                console.log('触发了设置', newValue);
+                target[key] = newValue;
+            }
+        });
+
+        pObj.info.hobby = 'xxxx';
+
+        console.log(obj);
+        
+    </script>
+</body>
+
+</html>

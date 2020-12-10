@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    // Number、String、Boolean
+    let str = 'hello world'; // string
+    // let newStr = str.replace(' ', '~~~');
+
+    // 上面 1 行，相当于下面 3 行，这 3 行是 JS 内部悄悄做的
+    let temp = new String(str); // 就是把普通数据类型 string 转换成了 包装类型 String
+    let newStr = temp.replace(' ', '~~~');
+    temp = null;
+
+    console.log(newStr);
+    </script>
+</body>
+
+</html>

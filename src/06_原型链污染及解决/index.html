@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    /* const obj1 = {};
+    
+    // 突然间这么一写，所有原型上的 toString 都被污染了
+    obj1.__proto__.toString = function() {
+        alert('Hello World, xixi~~~');
+    };
+
+    const arr1 = [];
+    console.log(Object.prototype.toString.call(obj1));
+    console.log(Object.prototype.toString.call(arr1)); */
+
+
+    // 解决方式1
+    // 冻结 Object.prototype
+    /* Object.freeze(Object.prototype);
+
+    const obj1 = {};
+    
+    // 突然间这么一写，所有原型上的 toString 都被污染了
+    obj1.__proto__.toString = function() {
+        alert('Hello World, xixi~~~');
+    };
+
+    const arr1 = [];
+    console.log(Object.prototype.toString.call(obj1));
+    console.log(Object.prototype.toString.call(arr1)); */
+
+
+    // 解决方式2，这种创建方式不存
+    /* const obj = {};
+    console.log(obj.__proto__); // 确实可以通过 __proto__ 做各种操作 */
+
+    // 得到一个纯对象
+    const obj = Object.create(null);
+    console.log(obj.__proto__); // undefined
+
+
+    /* var obj2 = {};
+    const obj3 = Object.create(obj2);
+    console.log(obj3.__proto__ === obj2); */
+
+
+    // Object.create 可以做原型继承
+    /* Star.prototype = Object.create(Person.prototype)
+    Star.prototype.__proto__ === Person.prototype */
+    </script>
+</body>
+
+</html>

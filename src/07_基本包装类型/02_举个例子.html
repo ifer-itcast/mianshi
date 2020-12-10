@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Number、String、Boolean
+        let str = 'hello world'; // string
+
+        str.color = 'pink'; // 转瞬即逝，只在当前行行运行的时候有效
+
+        /* let temp = new String(str);
+        temp.color = 'pink'
+        temp = null; */
+
+        // 所有对基本数据类型属性的访问都会触发那 3 步
+
+        
+        console.log(str.color); // undefined
+
+        /* let temp = new String(str);
+        console.log(temp.color);
+        temp = null; */
+
+
+        // 基本包装类型和对象最大的差异生命周期不一样
+        // 对象是离开当前作用域的时候销毁
+
+        /* let obj = {};
+
+        function test() {
+            let obj2 = {};
+        }
+        test(); */
+    </script>
+</body>
+
+</html>
