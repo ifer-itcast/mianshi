@@ -52,3 +52,5 @@ Star.prototype.constructor = Star;
 ## 08. 为什么 Vue3 数据的响应为什么改成了 Proxy
 
 ## 09. Vue 中组件通信有哪些方式
+
+## 10. 说一下 KeepAlive
