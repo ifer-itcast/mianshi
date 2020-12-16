@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // #1
+        setTimeout(function () {
+            console.log(1);
+        });
+        new Promise(resolve => {
+            console.log(2);
+            resolve();
+        }).then(() => {
+            // #2，走完之后确实会输出一个3，同时会生成一个微任务
+            console.log(3);
+            // return Promise.resolve();
+        }).then(() => {
+            // #3
+            console.log(4);
+        });
+        console.log(5);
+    </script>
+</body>
+
+</html>

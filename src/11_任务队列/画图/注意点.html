@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    new Promise(function(resolve) {
+        // 注意点1：这里的代码是会马上执行的
+        // #1
+        console.log('b');
+        resolve();
+    }).then(() => {
+        // 注意点2：这里的代码执行不执行，取决于 #1 处有没有 resolve
+        console.log('a');
+        return Promise.resolve('ccc');
+    }).then((c) => {
+        // 注意点3：如果前一个 then 成功执行了，这里就会执行，因为 then 最后默认会有一个 return Promise.resolve()
+        console.log(c);
+    });
+    </script>
+</body>
+</html>

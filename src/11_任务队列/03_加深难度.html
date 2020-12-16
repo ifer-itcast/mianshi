@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // #1
+        setTimeout(() => {
+            
+            new Promise(resolve => {
+                resolve();
+            }).then(() => {
+                // #5
+                console.log('test');
+            });
+
+            console.log(4);
+        });
+
+        new Promise(resolve => {
+            resolve();
+            console.log(1)
+        }).then(() => {
+            // #2
+            console.log(3);
+            new Promise((resolve) => {
+                resolve();
+            }).then(() => {
+                // #3
+                console.log('before timeout');
+                // 这里相当于有一个隐藏的代码，会继续触发后面的 then
+                // return Promise.resolve();
+            }).then(() => {
+                // #4
+                Promise.resolve().then(() => {
+                    console.log('also before timeout')
+                })
+            })
+        })
+        console.log(2);
+    </script>
+</body>
+
+</html>

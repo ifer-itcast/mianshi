@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">click</button>
+    <script>
+        /* function fn() {
+            console.log(1);
+        };
+        // 这个右边的函数是一上来就会执行的，那么这个函数执行完毕之后的返回值是 undefined
+        // 相当于下面的代码变成了 btn.onclick = undefined
+        btn.onclick = fn(); */
+
+
+        /* setTimeout(function() {
+            console.log(1);
+        }, 1000); */
+
+        // 立即执行函数一上来就走了，不会等 1s 后才执行
+        /* setTimeout((function() {
+            console.log(1);
+        })(), 1000); */
+
+        /* for (var i = 0; i < 5; i++) {
+            setTimeout((function (i) {
+                console.log(i);
+            })(i), i * 1000);
+        } */
+
+        // JS 代码的执行分为同步任务和异步任务
+        // 当碰到同步任务时，直接在执行栈中执行
+        // 当碰到异步任务并且时机符合时，就把异步代码添加到任务队列当中
+        // 当执行栈中的同步代码执行完毕后，就取任务队列当中把异步代码拿到执行栈中执行
+        // 这种反复去任务队列查找异步任务并执行的操作我们称为事件环（Event Loop）
+
+        /* console.log(2);
+        setTimeout(function() {
+            console.log(1);
+        });
+        console.log(3); */
+
+
+        /* setTimeout(function() {
+            console.log(1);
+        }, 200);
+        while(true) {} */
+    </script>
+</body>
+
+</html>

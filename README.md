@@ -54,3 +54,6 @@ Star.prototype.constructor = Star;
 ## 09. Vue 中组件通信有哪些方式
 
 ## 10. 说一下 KeepAlive
+
+## 11. 任务队列（宏任务/微任务）
+
