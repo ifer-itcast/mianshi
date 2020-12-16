@@ -284,3 +284,52 @@ new Promise((resolve, reject) => {
     console.log(8);
 });
 ```
+
+## 8. 大大结局
+
+```js
+function func(num) {
+    return function () {
+        // #1
+        console.log(num)
+    };
+}
+setTimeout(func(1));
+
+async function async3() {
+    await async4();
+    // #2
+    console.log(8)
+}
+async function async4() {
+    console.log(5)
+}
+async3();
+function func2() {
+    // #3
+    console.log(2);
+    async function async1() {
+        await async2();
+        // #6
+        console.log(9)
+    }
+    async function async2() {
+        console.log(5)
+    }
+    async1();
+    setTimeout(func(4))
+}
+setTimeout(func2);
+
+setTimeout(func(3));
+
+new Promise(resolve => {
+    console.log('Promise');
+    resolve()
+})
+    // #4
+    .then(() => console.log(6))
+    // #5
+    .then(() => console.log(7));
+console.log(0);
+```
