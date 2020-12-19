@@ -64,3 +64,8 @@ Star.prototype.constructor = Star;
 ## 13. 数组扁平化后去重并排序
 
 不用 flat 如何扁平化？不用 Set 如何去重？不用 sort 如何排序
+
+```js
+// 封装一个睡眠函数
+const sleep = time => new Promise((resolve, reject) => setTimeout(resolve, time))
+```
