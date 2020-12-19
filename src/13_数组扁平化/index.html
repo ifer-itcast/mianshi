@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 扁平化数组（多维数组变成一维数组），去重后，并排序
+    const arr = [1, 7, 8, 99, 99, 1,[1, 2, [1, 2, 3, [45, 55, 11]]]];
+
+    // 方法一：用 reduce 配合递归可以做数组的扁平化
+    
+    // 方法二
+    /* let r = arr.flat(Infinity);
+    console.log(r); */
+
+    // new Set(arr.flat(Infinity)) // 这一步写完，可以去重，但是 new Set() 后的返回值不再是数组了
+    
+    // 把 Set 实例转数组，“可迭代”，[Symbol.iterator]
+
+    // console.log([...new Set(arr.flat(Infinity))]);
+
+    // console.log(Array.from(new Set(arr.flat(Infinity))));
+
+    console.log([...new Set(arr.flat(Infinity))].sort((n1, n2) => n1 - n2));
+
+    // console.log([...'hello']);
+
+    /* let str = 'hello';
+    // console.log(str.__proto__);
+    console.log(Object.getPrototypeOf(str)); */
+
+    // console.dir([]);
+
+    console.log({age: 18}); // 对象默认是不可迭代的，不能直接用三个点
+
+
+    // 迭代器、Generator、Promise、Async/Await
+    </script>
+</body>
+</html>

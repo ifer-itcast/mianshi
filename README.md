@@ -60,3 +60,7 @@ Star.prototype.constructor = Star;
 ## 12. 组件传值的一些便捷写法
 
 需求/场景：子组件需要使用并修改父组件的数据，可以通过 v-model 和 .sync 修饰符
+
+## 13. 数组扁平化后去重并排序
+
+不用 flat 如何扁平化？不用 Set 如何去重？不用 sort 如何排序
